@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.querydsl.core.entity.QTeam.team;
 
@@ -21,10 +22,18 @@ public class TeamRepositoryImpl implements TeamRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Team> findAllByNotDelete() {
+    public List<Team> findAll() {
         return queryFactory.selectFrom(team)
                 .where(deleteNot())
                 .fetch();
+    }
+
+    @Override
+    public Optional<Team> findQueryById(Long id) {
+        return Optional.ofNullable(queryFactory
+                .selectFrom(team)
+                .where(deleteNot().and(team.id.eq(id)))
+                .fetchOne());
     }
 
     private BooleanExpression deleteNot() {

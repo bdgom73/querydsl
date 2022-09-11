@@ -64,6 +64,7 @@ public class MemberController {
 
     @PostMapping("/v1/members/{userId}")
     public String updateMember(@ModelAttribute("member") MemberTeamDto member,  @PathVariable("userId") Long userId) {
+        log.info("memberId={}", member.getTeamId());
         memberService.update(new MemberDto(userId, member.getUsername(), member.getAge()), member.getTeamId());
         return "redirect:/v1/members/";
     }

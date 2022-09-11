@@ -56,6 +56,10 @@ public class MemberService {
             findMember.changeTeam(team);
         }
 
+        if (teamId == null) {
+            findMember.changeTeam(null);
+        }
+
         memberRepository.findByUsername(memberDto.getUsername()).ifPresent(m -> {
             if (!m.getId().equals(memberDto.getId())
                     && m.getUsername().equals(memberDto.getUsername())) {

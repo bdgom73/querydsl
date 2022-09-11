@@ -18,11 +18,11 @@ public class TeamService {
 
     @Transactional
     public List<Team> getTeamList() {
-        return teamRepository.findAllByNotDelete();
+        return teamRepository.findAll();
     }
 
     public Team findById(Long teamId) {
-        return teamRepository.findById(teamId).orElseThrow();
+        return teamRepository.findQueryById(teamId).orElseThrow();
     }
 
     @Transactional
