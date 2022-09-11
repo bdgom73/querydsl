@@ -22,15 +22,13 @@
 
                 <div class="mt-3">
                     <div class="h3">유저목록</div>
-                    <ul th:each="m : ${members}" th:object="${m}">
-                        <li>
-                            <div>
-                                <span>username : </span>
-                                <a th:href="|/v1/members/${m.id}|" th:text="*{username}"></a>
-                            </div>
-                            <div th:text="|age : *{age}세|"></div>
+                    <ul th:each="m : ${members}" th:object="${m}" class="list-group">
+                        <li class="list-group-item">
+                            <a th:href="|/v1/members/${m.id}|" th:text="*{username}"></a>
+                            <span th:text="|*{age}세|"></span>
                         </li>
                     </ul>
+                    <div class="" th:if="${members.size() <= 0}">유저가 없습니다.</div>
                 </div>
             </div>
         </div>

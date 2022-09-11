@@ -22,13 +22,9 @@
 
                 <div class="mt-3">
                     <div class="h3">목록</div>
-                    <ol >
-                        <li th:each="t : ${teams}" th:object="${t}">
-                            <div>
-                                <a th:href="|/v1/teams/${t.id}|" th:text="*{name}"></a>
-                            </div>
-
-                        </li>
+                    <ol  class="list-group">
+                        <a  th:href="|/v1/teams/${t.id}|" th:text="*{name}" th:each="t : ${teams}" th:object="${t}" class="list-group-item ">
+                        </a>
                     </ol>
                 </div>
             </div>
