@@ -1,0 +1,4 @@
+rootProject.name = 'querydslTest'
+include 'module-core'
+include 'module-web'
+

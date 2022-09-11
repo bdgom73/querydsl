@@ -1,0 +1,17 @@
+
+version = '1.0.0'
+
+springBoot {
+    buildInfo()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    implementation project(':module-core')
+}
